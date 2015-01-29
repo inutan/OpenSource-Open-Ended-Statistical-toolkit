@@ -1,5 +1,28 @@
+###############################################################################
+"""	
+@author		: Nutan Kumari
+@filename	:	DOE-Factorial.py
+@brief		: This file provides the implementation for common 
+			  functions  for DOE Factorial.
+@functions	:  
+	1.	OSOEST_fullfact()	:	Provides implementation for Full Factoorial
+	2.	OSOEST_ff2n()		: 	Provides implementation for 2-Level 
+								full-factorial 
+	3.	OSOEST_fracFact()	:	Provides implementation for fractional 
+								factorial
+@version	:	v1.0
+@date		:	29 Jan 2015
+"""
+###############################################################################
+
 import re
 
+
+"""
+@function		: getNDimensioanlList
+@brief			: Helper function used by OSOEST_fullfact()
+@processing		:	TBD 	
+"""
 def getNDimensioanlList(nb_lines, n):
 	# Returns a list of list. 
 	# The length of list is nb_lines. 
@@ -13,24 +36,25 @@ def getNDimensioanlList(nb_lines, n):
 			
 	return nDimList
 
-
-def stk_fullfact(levels):
-	""" 
-		Function Name : stk_fullfact()
-		Description: TBD
-		Input Params: List stating levels. 
-					   e.g. The scenario where we have three levels with 
-					   2, 3 and 1 variants in each respectively, the levels
-					   list would be [2,3,1]  
-		Return : Returns the a list of list representing the full factorial
-				  For the above example return would be 
-				  [	[0, 0, 0], 
-					[1, 0, 0], 
-					[0, 1, 0],
-					[1, 1, 0], 
-					[0, 2, 0],
-					[1, 2, 0]]	
-	"""
+""" 
+@function		: OSOEST_fullfact()
+@brief			: Provides implementation for OSOEST_fullfact API function
+@processing		:	
+	Input Params: List stating levels. 
+				   e.g. The scenario where we have three levels with 
+				   2, 3 and 1 variants in each respectively, the levels
+				   list would be [2,3,1]  
+	Return : Returns the a list of list representing the full factorial
+			  For the above example return would be 
+			  [	[0, 0, 0], 
+				[1, 0, 0], 
+				[0, 1, 0],
+				[1, 1, 0], 
+				[0, 2, 0],
+				[1, 2, 0]]	
+"""
+def OSOEST_fullfact(levels):
+	
 	n = len(levels)  # number of factors	e.g levels= [2,3]
 	nb_lines = 1
 	for level in levels:
@@ -54,9 +78,12 @@ def stk_fullfact(levels):
 			
 	return fullFactorial
 
-
+"""
+The following main function should be used for unit testing this 
+module
+"""
 if __name__=="__main__":
 	levels = [2,3,1]
-	print stk_fullfact(levels)
+	print OSOEST_fullfact(levels)
 	
 # your code goes here
