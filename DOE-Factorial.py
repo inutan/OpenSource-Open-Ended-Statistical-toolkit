@@ -17,6 +17,54 @@
 
 import re
 
+"""
+@function	: OSOEST_ff2n()
+@brief		: Provides implementation for OSOEST_ff2n API function.
+@processing	: 
+    Create a 2-Level full-factorial design
+    
+    Parameters
+    ----------
+    n : int
+        The number of factors in the design.
+    
+    Returns
+    -------
+    mat : 2d-array
+        The design matrix with coded levels -1 and 1
+    
+    Example
+    -------
+    ::
+    
+        >>> ff2n(3)
+        array([[-1., -1., -1.],
+               [ 1., -1., -1.],
+               [-1.,  1., -1.],
+               [ 1.,  1., -1.],
+               [-1., -1.,  1.],
+               [ 1., -1.,  1.],
+               [-1.,  1.,  1.],
+               [ 1.,  1.,  1.]])
+       
+"""
+
+def OSOEST_ff2n(n):
+	array = [] #list with element "2s"
+	for i in range(0,n):
+		array.append(2)
+	nb_lines = 1  #finding product of the elements in the list
+	for arr in array:
+		nb_lines *= arr 
+	#print array
+	a = OSOEST_fullfact(array)
+	p = len(array)
+	for j in range(0,nb_lines):
+		for k in range(0,p):
+			if a[j][k] == 0:
+				a[j][k] = -1
+	return a
+
 
 """
 @function		: getNDimensioanlList
@@ -38,7 +86,7 @@ def getNDimensioanlList(nb_lines, n):
 
 """ 
 @function		: OSOEST_fullfact()
-@brief			: Provides implementation for OSOEST_fullfact API function
+@brief			: Provides implementation for OSOEST_fullfact API function.
 @processing		:	
 	Input Params: List stating levels. 
 				   e.g. The scenario where we have three levels with 
@@ -83,7 +131,7 @@ The following main function should be used for unit testing this
 module
 """
 if __name__=="__main__":
-	levels = [2,3,1]
+	levels = [2,2,2]
 	print OSOEST_fullfact(levels)
-	
-# your code goes here
+	n = 3
+	print OSOEST_ff2n(n)
