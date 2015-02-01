@@ -123,7 +123,6 @@ def OSOEST_fullfact(levels):
 		level_repeat *= levels[i]
 		for j in range(0, nb_lines):
 			fullFactorial[j][i] = rng[j]
-			
 	return fullFactorial
 
 """
@@ -133,5 +132,5 @@ module
 if __name__=="__main__":
 	levels = [2,2,2]
 	print OSOEST_fullfact(levels)
-	n = 3
+	n = 12
 	print OSOEST_ff2n(n)
